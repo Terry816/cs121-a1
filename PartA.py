@@ -7,28 +7,29 @@ class Token:
     def __init__(self):
         self.tokens = defaultdict(int)
 
-
     def tokenize(self, file: str):
         #function takes in a file object and then returns a list of tokens
         #the input paramters is a .txt file and is a string
-
+        temp = deque()
         for line in sys.stdin:
             for word in line.strip().split():
-                temp = deque()
+                temp.clear()
                 temp.append(word)
                 while temp:
-                    word = temp[0]
+                    word = temp[0].lower()
                     i = 0
                     while i < len(word):
                         letter = word[i]
-                        if not letter.isalnum():
-                            self.tokens[word[:i]] += 1
+                        if not ((ord(letter) >= 48 and ord(letter) <= 57) or \
+                            (ord(letter) >= 97 and ord(letter) <= 122)):
+                            if word[:i] != "":
+                                self.tokens[word[:i]] += 1
                             temp.append(word[i+1:])
                             break
                         i += 1
                     else:
                         if word != "":
-                            self.tokens[word.lower()] += 1
+                            self.tokens[word] += 1
                     temp.popleft()
                     
 
@@ -37,7 +38,7 @@ class Token:
         return self.tokens.items()
 
 
-    def tprint(self):
+    def print(self):
         #function prints out the word frequencies
 
         sorted_word_count = dict(sorted(self.computeWordFrequencies(), key=lambda x: (-x[1], x[0])))
@@ -50,7 +51,7 @@ if __name__ == "__main__":
     print("hello")
     test = Token()
     test.tokenize("testA.txt")
-    test.tprint()
-    print("made it this far")
+    test.print()
+    print("made it this far\n")
 
 
