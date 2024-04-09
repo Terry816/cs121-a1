@@ -43,7 +43,7 @@ class Token:
         sorted_word_count = dict(sorted(self.computeWordFrequencies(), key=lambda x: (-x[1], x[0])))
 
         for word, count in sorted_word_count.items():
-            print(f"{word}: {count}")
+            print(f"{word} {count}")
 
 
 if __name__ == "__main__":
