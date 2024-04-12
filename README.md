@@ -1,8 +1,7 @@
 # cs121-a1
 
 # Assignment 1: Text Processing
-## Terry Kim
-## 56288781
+## Terry Kim - 56288781
 ## Part A: Word Frequencies
 
 ### Class: Token()
