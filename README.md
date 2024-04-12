@@ -23,7 +23,7 @@ This method prints the <token> <freq>. Runs in O(nlogn) because we are sorting t
 
 ### Running the Program
 
-If an input file is not specified it will return an error.
+If an input file is not specified or it is not a valid name it will return an error
 
 If one file is given then it will return the printed <token> <freq> and it will also return the number of occurrences of each token.
 
