@@ -24,12 +24,14 @@ This method prints the <token> <freq>. Runs in O(nlogn) because we are sorting t
 ### Running the Program
 
 If an input file is not specified it will return an error.
-If one file is given then it will return the printed <token> <freq> and it will also return the number of occurrences of each token
+
+If one file is given then it will return the printed <token> <freq> and it will also return the number of occurrences of each token.
+
 If multiple files are given, then it will accumulate all the unique words for each of the files and will print the combined <token> <freq> as well as the combined number of occurrences of each token.
 
 ## Part B: Intersection of Two Files
 
-### Class Intersection(Token)
+### Class: Intersection(Token)
 
 This class inherits from the Token Class that was previously written for Part B.
 
@@ -44,10 +46,14 @@ This method reads in two files at a time and returns the number of words in comm
 ### Running the Program
 
 If an input file is not specified it will return an error.
+
 If one file is given then it will return the error to provide an additional file.
+
 If multiple files are given, then it will accumulate all the unique words for each of the files in pairs and will print the combined number of common words between them. If there are an odd number of files given then the last one will not be processed because it doesn't have a pair.
+
 Valid:
 e.g., python PartB.py file1 file2 file3 file4
+
 Not Valid:
 e.g., python PartB.py file1 file2 file3
 file 3 will not be processed
