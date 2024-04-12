@@ -52,8 +52,9 @@ If one file is given then it will return the error to provide an additional file
 If multiple files are given, then it will accumulate all the unique words for each of the files in pairs and will print the combined number of common words between them. If there are an odd number of files given then the last one will not be processed because it doesn't have a pair.
 
 Valid:
-e.g., python PartB.py file1 file2 file3 file4
+python PartB.py file1 file2 file3 file4
 
 Not Valid:
-e.g., python PartB.py file1 file2 file3
+python PartB.py file1 file2 file3
+
 file 3 will not be processed
