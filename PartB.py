@@ -26,7 +26,7 @@ class Intersection(Token):
         self.tokenize(file1) #calling this inherited method is O(n).
         res = 0
         temp = deque()
-        with open(file2, "r") as f:
+        with open(file2, "r", encoding="utf-8") as f:
             for line in f:
                 for word in line.strip().split():
                     temp.clear()

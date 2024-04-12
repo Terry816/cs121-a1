@@ -12,7 +12,7 @@ class Token:
 #It will run in linear time relative to the size of the input.
     def tokenize(self, file: str):
         temp = deque()
-        with open(file, "r") as f:
+        with open(file, "r", encoding="utf-8") as f:
             for line in f:
                 for word in line.strip().split():
                     temp.clear()
