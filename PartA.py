@@ -6,9 +6,11 @@ class Token:
     def __init__(self):
         self.tokens = defaultdict(int)
 
+#tokenize function: Runtime Complexity is O(n). "n" is the total length of the file or the length of every single character in the input file.
+#The function parses through each letter of the input file and checks whether the ascii value of the character is valid within the selected ranges (a-z) and (0-9).
+#if there are special characters inside words, then it will split the word wherever the special character is. i.e. Ad@m - > { ad: 1, m :1}
+#It will run in linear time relative to the size of the input.
     def tokenize(self, file: str):
-        #function takes in a file object and then returns a list of tokens
-        #the input paramters is a .txt file and is a string
         temp = deque()
         with open(file, "r") as f:
             for line in f:
@@ -32,10 +34,13 @@ class Token:
                                 self.tokens[word] += 1
                         temp.popleft()
 
+#computeWordFrequencies function: Runtime Complexity is O(1) because hashmap lookup is constant and stored in memory.
     def computeWordFrequencies(self):
         return self.tokens.items()
 
 
+#print function: Runtime Complexity is O(n log n). "n" is the total length of the keys in the dictionary.
+#Although iterating in the for loop is just O(n), the sorting algorithm takes O(nlogn) time to run.
     def print(self):
         #function prints out the word frequencies
 
@@ -47,11 +52,15 @@ class Token:
 
 if __name__ == "__main__":
     test = Token()
+
+    #We are calling the tokenize function k times, with k being the number of input files.
+
     if len(sys.argv) <= 1:
         print("please input a file")
     else:
         for i in sys.argv[1:]:
             test.tokenize(i)
     test.print()
-    print("made it this far")
+    print("Done with the test cases \n")
+
 
