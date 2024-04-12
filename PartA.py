@@ -36,7 +36,7 @@ class Token:
 
 #computeWordFrequencies function: Runtime Complexity is O(1) because hashmap lookup is constant and stored in memory.
     def computeWordFrequencies(self):
-        return self.tokens.items()
+        return len(self.tokens)
 
 
 #print function: Runtime Complexity is O(n log n). "n" is the total length of the keys in the dictionary.
@@ -44,7 +44,7 @@ class Token:
     def print(self):
         #function prints out the word frequencies
 
-        sorted_word_count = dict(sorted(self.computeWordFrequencies(), key=lambda x: (-x[1], x[0])))
+        sorted_word_count = dict(sorted(self.tokens.items(), key=lambda x: (-x[1], x[0])))
 
         for word, count in sorted_word_count.items():
             print(f"{word} {count}")
@@ -61,6 +61,7 @@ if __name__ == "__main__":
         for i in sys.argv[1:]:
             test.tokenize(i)
     test.print()
+    print(f"this is the number of occurences of each token: {test.computeWordFrequencies()}")
     print("Done with the test cases \n")
 
 

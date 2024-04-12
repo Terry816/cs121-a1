@@ -7,8 +7,6 @@ class Intersection(Token):
 
     def __init__(self):
         Token.__init__(self)
-        self.num_intersect = 0
-
 
     #Runtime Complexity: O(1) because dictionary lookups are constant
     def process(self, word: str):
@@ -57,11 +55,7 @@ class Intersection(Token):
                         temp.popleft()
 
         self.tokens.clear()
-        self.num_intersect += res
         return res
-        
-    def amount_intersect(self):
-        return self.num_intersect
 
 if __name__ == "__main__":
     test = Intersection()
