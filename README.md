@@ -1,42 +1,54 @@
 # cs121-a1
 
-# Tokenizer and Word Frequency Counter
-
+# Assignment 1: Text Processing
+## Terry Kim
+## 56288781
 ## Part A: Word Frequencies
 
-### Method/Function: `List<Token> tokenize(TextFilePath)`
+### Class: Token()
 
-This method/function reads in a text file and returns a list of tokens in that file. Tokens are sequences of alphanumeric characters, independent of capitalization (e.g., "Apple", "apple", "aPpLe" are the same token). Regular expressions and external tokenizers (e.g., NLTK) are not allowed.
+This class contains the methods for tokenizing, printing, and computing. It has an attribute self.tokens which is a defaultdict structure that stores all the unique words as keys
+and the value is the number of occurrences of that word. 
 
-### Method/Function: `Map<Token,Count> computeWordFrequencies(List<Token>)`
+### Method: tokenize(self, file: str):
 
-This method/function counts the number of occurrences of each token in the token list. It should be implemented without using the `Counter` class or similar libraries.
+This method reads in a text file and does not return anything but instead modifies the self.tokens attribute in place. It goes through each line of the file and then each individual character and will determine if the word is valid or not and then update the dictionary as needed. Runs in O(n)
 
-### Method/Function: `void print(Frequencies<Token, Count>)`
+### Method: computeWordFrequencies(self):
 
-This method/function prints out the word frequency count onto the screen. The printout should be ordered by decreasing frequency, with ties broken alphabetically.
+This method counts the number of occurrences of each unique token in the dictionary. Takes O(1) to return the number of keys in the dictionary.
+
+### Method: print(self):
+
+This method prints the <token> <freq>. Runs in O(nlogn) because we are sorting the dictionary by decreasing frequency and alphabetically if tied.
 
 ### Running the Program
 
-Your program must run from the command line, taking one text file as an argument and outputting the token frequencies.
-
-Example output formats:
-
-- `<token>\t<freq>`
-- `<token> <freq>`
-- `<token> - <freq>`
-- `<token> = <freq>`
-- `<token> > <freq>`
-- `<token> -> <freq>`
-- `<token> => <freq>`
+If an input file is not specified it will return an error.
+If one file is given then it will return the printed <token> <freq> and it will also return the number of occurrences of each token
+If multiple files are given, then it will accumulate all the unique words for each of the files and will print the combined <token> <freq> as well as the combined number of occurrences of each token.
 
 ## Part B: Intersection of Two Files
 
-Write a program that takes two text files from the command line as arguments and outputs the number of tokens they have in common.
+### Class Intersection(Token)
 
-### Program Requirements
+This class inherits from the Token Class that was previously written for Part B.
 
-- The program should reuse the code written for Part A to tokenize and count the tokens.
-- It should avoid reading the entire files into computer RAM, as some files may be very large.
-- Programs that perform better will be given more credit than those that perform poorly.
+### Method: process(self, word: str) 
 
+This method returns True if the word is already present in the self.tokens class attribute else it will return False. Takes O(1) time to do a key lookup in the dict
+
+### Method: intersect(self, file1: str, file2: str)
+
+This method reads in two files at a time and returns the number of words in common between the two. Runs in O(n+m) time
+
+### Running the Program
+
+If an input file is not specified it will return an error.
+If one file is given then it will return the error to provide an additional file.
+If multiple files are given, then it will accumulate all the unique words for each of the files in pairs and will print the combined number of common words between them. If there are an odd number of files given then the last one will not be processed because it doesn't have a pair.
+Valid:
+e.g., python PartB.py file1 file2 file3 file4
+Not Valid:
+e.g., python PartB.py file1 file2 file3
+file 3 will not be processed
